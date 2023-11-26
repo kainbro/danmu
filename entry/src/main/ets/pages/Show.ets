@@ -2,17 +2,18 @@ import router from '@ohos.router'
 
 @Entry
 @Component
-struct Index {
-  @State message: string = '手持字幕DEMO'
+struct Show {
+  @State message: string = '手持字幕-定时器+属性实现'
   @State offSetValue: number = 0
   intervalId: number
-  speed: number = 8
+  speed: number = 5
   fontColor: Color = 0x333333
   bgColor: Color = 0xff8460ff
 
   aboutToAppear() {
     const params = router.getParams(); // 获取传递过来的参数对象
     this.message = params['message']; // 获取message属性的值
+    this.speed = params['speed']; // 获取speed属性的值
 
     this.intervalId = setInterval(() => {
       if (this.speed < 1) {
@@ -39,7 +40,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .fontColor(this.fontColor)
           .offset({ x: -1 * this.offSetValue})
-          .height('130vp')
+          .height('140vp')
       }
       .width('100%')
       .height('100%')
